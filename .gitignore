@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+venv/
+.env
+google_key.json
+service_account.json
+credentials.json
+.DS_Store
+debug_*.py
