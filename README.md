@@ -26,7 +26,7 @@ A smart Telegram bot that helps you track your expenses, manage your budget, and
 
 1.  Clone this repository:
     ```bash
-    git clone https://github.com/YOUR_USERNAME/AI-financial-asistant.git
+    git clone https://github.com/cleo-tongli/AI-financial-asistant.git
     cd AI-financial-asistant
     ```
 
