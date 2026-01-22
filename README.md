@@ -1,8 +1,8 @@
-# AI Financial Assistant 🤖💸
+# AI Financial Assistant 
 
 A smart Telegram bot that helps you track your expenses, manage your budget, and analyze your spending habits using Google Sheets and OpenAI.
 
-## Features 🚀
+## Features 
 
 *   **Natural Language Expense Tracking**: Just say "Spent 15€ on Lunch" and it's saved.
 *   **Google Sheets Integration**: All data is stored in your own Google Sheet for full control.
@@ -14,7 +14,7 @@ A smart Telegram bot that helps you track your expenses, manage your budget, and
 *   **Calculations**: Ask "Total spending this week" or "How much in January?" for instant analysis.
 *   **Calendar Integration**: Can schedule events via Google Calendar (optional).
 
-## Setup 🛠️
+## Setup 
 
 ### 1. Prerequisites
 *   Python 3.8+
@@ -60,7 +60,7 @@ A smart Telegram bot that helps you track your expenses, manage your budget, and
 ./run_bot.sh
 ```
 
-## Usage 📱
+## Usage 
 
 *   **Track**: "Taxi 15" -> `Saved: Transport 15€`
 *   **Analyze**: "Total this month?" -> `Your total is 450€`
