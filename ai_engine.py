@@ -76,6 +76,50 @@ TOOLS_SCHEMA = [
     {
         "type": "function",
         "function": {
+            "name": "list_calendar_events",
+            "description": "List upcoming calendar events to check availability or find Event IDs for deletion/modification.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "max_results": {"type": "integer", "description": "Max number of events to list (default 10)."}
+                },
+            },
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "update_calendar_event",
+            "description": "Update/Modify an existing calendar event. You MUST list events first to get the Event ID.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "event_id": {"type": "string", "description": "The Event ID to update."},
+                    "summary": {"type": "string", "description": "New title (optional)."},
+                    "start_time_str": {"type": "string", "description": "New start time 'YYYY-MM-DD HH:MM' (optional)."},
+                    "duration_minutes": {"type": "integer", "description": "New duration in minutes (optional)."}
+                },
+                "required": ["event_id"]
+            },
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "delete_calendar_event",
+            "description": "Delete a calendar event. You MUST list events first to get the Event ID.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "event_id": {"type": "string", "description": "The Event ID to delete."}
+                },
+                "required": ["event_id"]
+            },
+        }
+    },
+    {
+        "type": "function",
+        "function": {
             "name": "delete_last_row",
             "description": "Delete the last recorded expense/row from the sheet (Undo). Use this when user says 'delete', 'undo', 'remove last'.",
             "parameters": {
@@ -173,6 +217,12 @@ async def get_agent_response(conversation_history):
                     tool_result = tools.append_to_sheet(**args)
                 elif function_name == "create_calendar_event":
                     tool_result = tools.create_calendar_event(**args)
+                elif function_name == "list_calendar_events":
+                    tool_result = tools.list_calendar_events(**args)
+                elif function_name == "update_calendar_event":
+                    tool_result = tools.update_calendar_event(**args)
+                elif function_name == "delete_calendar_event":
+                    tool_result = tools.delete_calendar_event(**args)
                 elif function_name == "delete_last_row":
                     tool_result = tools.delete_last_row()
                 elif function_name == "delete_specific_row":

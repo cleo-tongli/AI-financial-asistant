@@ -109,6 +109,12 @@ IMPORTANT Rules:
    - If user asks for total expenses (e.g., "this week", "last month", "Jan 2026"), YOU must calculate the specific date range based on today's date ({current_time}).
    - Call 'calculate_total' with 'start_date' and 'end_date' (YYYY-MM-DD).
    - Example - "This month": start="2026-01-01", end="2026-01-31".
+
+6. Calendar Management:
+   - To DELETE or MODIFY an event, you MUST first call 'list_calendar_events' to see the list and get the correct Event ID.
+   - Do NOT guess the Event ID.
+   - After listing, if the user confirms the event, call 'delete_calendar_event' or 'update_calendar_event' with the ID found.
+   - For listing, use 'list_calendar_events(max_results=10)'.
 """
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -125,7 +131,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_conversations[user_id] = [{"role": "system", "content": system_message}]
     # --- Fix End ---
     
-    await update.message.reply_text(f"Hello {username}! I am My Financial Assistant. I can help you with bookkeeping or scheduling.")
+    await update.message.reply_text(f"Hello {username}! I am your Personal Financial Assistant. I can help you with bookkeeping or scheduling.")
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle all text messages"""
